@@ -18,7 +18,7 @@ object AnalyticsModels extends App with DataIngestion with TransformedModels wit
 
   listing_with_reviews.
     groupBy("LISTING_ID","LISTING_NAME","REVIEW_SENTIMENT").
-    agg(count("REVIEW_COMMENTS").as("SENTIMENT #")).orderBy(desc("SENTIMENT #")).show(truncate = false)
+    agg(count("REVIEW_COMMENTS").as("SENTIMENT #")).orderBy(desc("SENTIMENT #")).explain(mode="extended")
 
   spark.streams.awaitAnyTermination()
 }
