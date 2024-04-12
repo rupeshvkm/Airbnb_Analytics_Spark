@@ -14,7 +14,7 @@ object AnalyticsModels extends App with DataIngestion with TransformedModels wit
 
 //  overall user experience in all the listings
 
-  val listing_with_reviews = listings_cleansed.join(reviews_full_moon_stays,Seq("LISTING_ID"),"left")
+  val listing_with_reviews = reviews_full_moon_stays.join(listings_cleansed,Seq("LISTING_ID"),"left")
 
   listing_with_reviews.
     groupBy("LISTING_ID","LISTING_NAME","REVIEW_SENTIMENT").
